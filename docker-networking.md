@@ -16,7 +16,9 @@
 ---
 ### Creating a new network
 
-> `docker network create my_network` This will create a network with default bridge driver configuration. This can be verified by command `docker network inspect my_network` , the driver value in json is bridge and the IPAM Config are identical to bridge network.
+> `docker network create my_network` This will create a network with default bridge driver configuration.
+\
+This can be verified by command `docker network inspect my_network` , the driver value in json is bridge and the IPAM Config are identical to bridge network.
 
 ```
 {
@@ -73,8 +75,6 @@ Assume we want to run a `nginx` container which is attached to our new network `
 
 > **Command**  `docker container run -d --name nginx2 --network my_network nginx`. By adding an argument `--network` we can pass the name of network we want our new container connected to.
 
-  
-
 > This can be verified by inspecting our network my_network `docker network inspect my_network`, we can see in the container json the name of the continer attached to this network.
 ```
 "Containers": {
@@ -93,6 +93,7 @@ Assume we want to run a `nginx` container which is attached to our new network `
 ### Connecting/disconnecting a container to an existing network on fly, can be achieved via cli easily.
 
 > **Command Syntax** `docker network connect [network_name/hash] [container_name/hash]`
+
 > **Command** `docker network connect bridge nginx2`
 
 In the above command `bridge` is the network name or we can use the hash that is created automatically by docker, and `nginx2` is the container name we ran above. Now when we inspect the container we'll see that our container is now connected to two networks.
@@ -134,5 +135,6 @@ In the above command `bridge` is the network name or we can use the hash that is
 }
 ```
 
+### Disconnect an image from network
 > To remove a container from a network we can run command `docker network disconnect f20c2457b4b0 nginx2`.
 
