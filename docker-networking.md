@@ -4,9 +4,13 @@
 # Basic Docker Networking Commands
 
 **Show networks :** docker network ls
+
 **Inspect a network :** docker network inspect
-**create a network :** docker network create —driver
+
+**Create a network :** docker network create —driver
+
 **Attach a network to container :** docker network connect
+
 **Detach a network from container :** docker network disconnect
 
 ### By default there are 3 network created :
